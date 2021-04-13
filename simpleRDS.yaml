@@ -1,0 +1,42 @@
+Parameters:
+    EnvironmentName:
+        Description: An environment name that will be prefixed to resource names
+        Type: String
+    Username:
+        Description: Username for database
+        Type: String
+    Password:
+        Description: Username for password
+        Type: String
+    DatabaseName:
+        Description: Database name
+        Type: String
+    DatabaseClusterID:
+        Description: Database CLuster Identifier
+        Type: String
+    
+Resources:
+  mySimpleDB:
+    Type: AWS::RDS::DBInstance
+    DeletionPolicy: "Retain"
+    Properties: 
+      VPCSecurityGroups: 
+        - Fn::ImportValue: !Sub "${EnvironmentName}-WebAccessSecurityGroupID"
+      CopyTagsToSnapshot: "true"
+      DBClusterIdentifier: !Ref DatabaseClusterID
+      DBInstanceClass: db.t3.small
+      DBSubnetGroupName: String
+      DBName: !Ref DatabaseName
+      MasterUsername: !Ref Username
+      MasterUserPassword: !Ref Password
+      PubliclyAccessible: false
+      Engine: "mysql"
+      DBSubnetGroupName: !Ref mySimpleDBSubnetGroup
+        
+  mySimpleDBSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties: 
+      DBSubnetGroupDescription: String
+      DBSubnetGroupName: String
+      SubnetIds: 
+        Fn::ImportValue: !Sub "${EnvironmentName}-PRIV-SN"

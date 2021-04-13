@@ -47,3 +47,31 @@ Resources:
             Fn::ImportValue: !Sub "${EnvironmentName}-PRIV-SN"
       ImageId: ami-05d72852800cbf29e
       InstanceType: t3.micro
+      
+Outputs:                #display the information specified by given ID  , considered as global variables we could say
+
+    WebAccessSecurityGroup: 
+        Description: A reference to the created WebAccessSecurityGroup
+        Value: !Ref WebAccessSecurityGroup                            
+        Export:
+          Name: !Sub ${EnvironmentName}-WebAccessSecurityGroupID       #print UdacityProject-VPCID
+
+    RoleForSSMAccess:
+        Description: Public Routing
+        Value: !Ref RoleForSSMAccess
+        Export:
+          Name: !Sub ${EnvironmentName}-RoleForSSMAccessID
+
+    ServerInstanceProfile:
+        Description: ServerInstanceProfile
+        Value: !Ref ServerInstanceProfile
+        Export:
+          Name: !Sub ${EnvironmentName}-ServerInstanceProfileID
+    
+    ServerInstance:
+        Description: ServerInstance
+        Value: !Ref ServerInstance
+        Export:
+          Name: !Sub ${EnvironmentName}-ServerInstanceID
+
+

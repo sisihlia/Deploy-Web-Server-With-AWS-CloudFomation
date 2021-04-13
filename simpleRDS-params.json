@@ -1,0 +1,22 @@
+[
+	{
+		"ParameterKey": "EnvironmentName",
+		"ParameterValue": "SimpleProject"
+	},
+  {
+		"ParameterKey": "Username",
+		"ParameterValue": "admin"
+	},
+  {
+		"ParameterKey": "Password",
+		"ParameterValue": "adminadmin"
+	},
+  {
+		"ParameterKey": "DatabaseName",
+		"ParameterValue": "SimpleRDS"
+	},
+  {
+		"ParameterKey": "DatabaseClusterID",
+		"ParameterValue": "SimpleDatabaseCluster"
+	}
+]
